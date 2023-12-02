@@ -1,11 +1,46 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss",
+      "skipTests": true
+    },
+    "@schematics/angular:class": {
+      "skipTests": true
+    },
+    "@schematics/angular:directive": {
+      "skipTests": true
+    },
+    "@schematics/angular:pipe": {
+      "skipTests": true
+    },
+    "@schematics/angular:service": {
+      "skipTests": true
+    }
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "GestionMarcheFront": {
       "projectType": "application",
-      "schematics": {},
+        "schematics": {
+          "@schematics/angular:component": {
+            "style": "scss",
+            "skipTests": true
+          },
+          "@schematics/angular:class": {
+            "skipTests": true
+          },
+          "@schematics/angular:directive": {
+            "skipTests": true
+          },
+          "@schematics/angular:pipe": {
+            "skipTests": true
+          },
+          "@schematics/angular:service": {
+            "skipTests": true
+          }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
