@@ -3,9 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { SideBarsModule } from './side-bars/side-bars.module';
-
+import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent
@@ -13,8 +11,7 @@ import { SideBarsModule } from './side-bars/side-bars.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardModule,
-    SideBarsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
