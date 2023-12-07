@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>club UIR</title>
+  <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
+  <!--  <link rel="stylesheet" href="../assets/css/styles.min.css" />-->
+</head>
+
+<body>
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body" style=" max-height: 200px;">
+      <h5 class="card-title fw-semibold mb-4">La liste des projets</h5>
+      <p class="mb-0">Visualiser les projets existants</p>
+    </div>
+  </div>
+</div>
+
+<div class="container" style=" max-width: 1300px; margin: 0 auto;">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-header">
+        <input type="text" class="form-control search-query" (input)="onSearch($event)" placeholder="Search" #table>
+      </div>
+      <table class="table table-striped text-center">
+        <thead>
+        <tr>
+          <th>nom du projet</th>
+          <th>budget</th>
+          <th (click)="sortProjectsByDateFin()" >date debut <br> date de fin</th>
+          <th>marché</th>
+          <th>taches</th>
+          <th>description</th>
+          <th>Cahier de charge</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="table" >
+        <tr *ngFor="let projet of getDisplayedData()">
+          <td>{{ projet.nom }}</td>
+          <td>{{ projet.budget }} DH</td>
+          <td>{{ projet.dateDebut | date:'dd/MM/yyyy' }} - {{projet.dateFin | date: 'dd/MM/yyyy'}}</td>
+          <td>{{ marketNames }}</td>
+          <td>
+            <ng-container *ngIf="projet.tasks && projet.tasks.length > 0; else noTasks">
+              <div *ngFor="let task of projet.tasks">
+                  {{task.libelle}}
+              </div>
+            </ng-container>
+            <ng-template #noTasks>
+              -----
+            </ng-template>
+          </td>
+          <td>{{ projet.description }}</td>
+          <td>{{ projet.fileName ? projet.fileName : '----' }}</td>
+          <td>
+            <button class="btn btn-success me-2" (click)="downloadFile(projet.idProject,projet.nom)">Download</button>
+            <button class="btn btn-danger" (click)="deleteProjectConfirmationDialog(projet.idProject)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between p-3">
+          <ngb-pagination
+            [(page)]="pageIndex"
+            [pageSize]="pageSize"
+            [collectionSize]="projects ? projects.length : 0"
+            (pageChange)="onPageChange($event)">
+          </ngb-pagination>
+          <select class="form-select w-25 h-25" id="pageSize" [(ngModel)]="pageSize" (change)="onItemsPerPageChange()">
+            <option [ngValue]="5">5 éléments par page</option>
+            <option [ngValue]="25">25 éléments par page</option>
+            <option [ngValue]="50">50 éléments par page</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- End of old code -->
+<script src="src/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="src/assets/js/sidebarmenu.js"></script>
+<script src="src/assets/js/app.min.js"></script>
+<script src="src/assets/libs/simplebar/dist/simplebar.js"></script>
+</body>
+
+</html>
+

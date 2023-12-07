@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +15,8 @@ import { ProjetModule } from './Components/projet/projet.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ProjetModule
+    ProjetModule,
+    NgbPagination
   ],
   providers: [],
   bootstrap: [AppComponent]
