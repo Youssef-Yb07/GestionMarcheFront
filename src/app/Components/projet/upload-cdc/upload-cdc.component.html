@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="projet">Projet:</label>
+            <select class="form-control" id="projet" [(ngModel)]="selectedProject" name="projet">
+              <option *ngFor="let project of Projects" [value]="project.idProject">{{ project.nom }}</option>
+            </select>
+          </div><br>
+
+          <div class="form-group">
+            <label for="fileInput">Selectionner le fichier</label>
+            <input id="fileInput" type="file" class="form-control" (change)="onFileSelected($event)">
+          </div>
+          <br>
+          <button class="btn btn-primary" (click)="uploadFile()">Envoyer</button>
+        </div>
+      </div>
+    </div>
+  </div>

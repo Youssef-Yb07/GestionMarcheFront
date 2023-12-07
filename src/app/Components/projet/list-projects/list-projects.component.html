@@ -51,7 +51,9 @@
           <td>
             <ng-container *ngIf="projet.tasks && projet.tasks.length > 0; else noTasks">
               <div *ngFor="let task of projet.tasks">
-                  {{task.libelle}}
+                  <ul>
+                    <li>{{task.libelle}}</li>
+                  </ul>
               </div>
             </ng-container>
             <ng-template #noTasks>

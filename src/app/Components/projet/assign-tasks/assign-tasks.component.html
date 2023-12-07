@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="projet">Projet:</label>
+            <select class="form-control" id="projet" [(ngModel)]="SelectedProject" name="projet">
+              <option *ngFor="let project of projects" [value]="project.idProject">{{ project.nom }}</option>
+            </select>
+          </div><br>
+
+          <div class="form-group">
+            <label for="tasks">Tâches:</label>
+            <select multiple class="form-control" id="tasks" [(ngModel)]="SelectedTasks" name="tasks">
+              <option *ngFor="let task of tasks" [value]="task.idTask">{{ task.description }}</option>
+            </select>
+          </div>
+          <br>
+
+          <button class="btn btn-primary" (click)="AssignTasksToProject()">Envoyer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

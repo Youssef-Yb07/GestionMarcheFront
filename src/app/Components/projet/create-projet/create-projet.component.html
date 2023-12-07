@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form (ngSubmit)="createProjet()">
+        <div class="form-group row">
+          <div class="row-cols-auto">
+            <label for="nom">Nom du projet:</label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="projet.nom" name="nom" required>
+          </div>
+          <div class="row-cols-auto">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" [(ngModel)]="projet.description" name="description" required></textarea>
+          </div>
+          <div class="row-cols-auto">
+            <label for="dateDebut">Date de début:</label>
+            <input type="date" class="form-control" id="dateDebut" [(ngModel)]="projet.dateDebut" name="dateDebut" required>
+          </div>
+          <div class="row-cols-auto">
+            <label for="dateFin">Date de fin:</label>
+            <input type="date" class="form-control" id="dateFin" [(ngModel)]="projet.dateFin" name="dateFin" required>
+          </div>
+          <div class="row-cols-auto">
+            <label for="budget">Budget:</label>
+            <input type="number" class="form-control" id="budget" [(ngModel)]="projet.budget" name="budget" required>
+          </div>
+          <div class="row-cols-auto">
+            <label for="statusProject">Statut:</label>
+            <select class="form-control" id="statusProject" [(ngModel)]="projet.statusProject" name="statusProject" required>
+              <option value="accepté">Accepté</option>
+              <option value="invalide">Invalide</option>
+            </select>
+          </div>
+        </div>
+        <br>
+      <button type="submit" class="btn btn-success">Enregistrer</button>
+      </form>
+        </div>
+      </div>
+  </div>
