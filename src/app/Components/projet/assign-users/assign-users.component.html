@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="projet">Projet:</label>
+            <select class="form-control" id="projet" [(ngModel)]="selectedProject" name="projet">
+              <option *ngFor="let project of Projects" [value]="project.idProject">{{ project.nom }}</option>
+            </select>
+          </div><br>
+
+          <div class="form-group">
+            <label for="directeur">Directeur:</label>
+            <select class="form-control" id="directeur" [(ngModel)]="selectedDirecteur" name="directeur">
+              <option *ngFor="let directeur of Directeurs" [value]="directeur.idUser">{{ directeur.nom }}</option>
+            </select>
+          </div><br>
+
+          <div class="form-group">
+            <label for="chefService">Chef de service:</label>
+            <select class="form-control" id="chefService" [(ngModel)]="selectedChefService" name="chefService">
+              <option *ngFor="let chefService of ChefsServices" [value]="chefService.idUser">{{ chefService.nom }}</option>
+            </select>
+          </div><br>
+
+          <div class="form-group">
+            <label for="employees">Employés:</label>
+            <div *ngFor="let employee of employees">
+              <input type="checkbox" id="employee{{employee.idUser}}" (change)="employee.idUser && toggleSelection(employee.idUser)">
+              <label for="employee{{employee.idUser}}">{{ employee.nom }}</label>
+            </div>
+          </div><br>
+
+          <button class="btn btn-primary" (click)="assignUsersToProject()">Assigner</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
