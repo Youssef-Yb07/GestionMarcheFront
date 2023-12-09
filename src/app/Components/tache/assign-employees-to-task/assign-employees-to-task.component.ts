@@ -6,7 +6,7 @@ import {UserService} from "../../../Services/User/user.service";
 import {User} from "../../../Classes/user";
 
 @Component({
-  selector: 'app-assign-employees-to-project',
+  selector: 'app-assign-employees-to-task',
   templateUrl: './assign-employees-to-task.component.html',
   styleUrls: ['./assign-employees-to-task.component.scss']
 })
@@ -57,15 +57,21 @@ export class AssignEmployeesToTaskComponent implements OnInit{
     this.tacheService.assignTaskToEmployee(idTask,this.selectedEmployee).subscribe(
       (data) => {
         console.log(data);
-        alert('Users assigned successfully');
+        this.successMessage="Tache Assignée avec Succés";
+        this.redirectAfterDelay();
       },
       (error) => {
         console.log(error);
-        alert('Error while assigning users');
+        this.errorMessage="Erreur lors de l'affectation"
       }
     );
   }
 
+  redirectAfterDelay() {
+    setTimeout(() => {
+      this.getTasks();
+    }, 5000);
+  }
 
 
 }

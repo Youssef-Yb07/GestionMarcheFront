@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../Classes/user";
 import {UserService} from "../../Services/User/user.service";
 import {Router} from "@angular/router";
+import {ProjectService} from "../../Services/Project/project.service";
 
 @Component({
   selector: 'app-authentication',
@@ -21,7 +21,7 @@ export class AuthenticationComponent  implements OnInit {
   login() {
     this.userService.login(this.email, this.password).subscribe(
       (response: any) => {
-        const role = response.role;
+        const role = response.roleName;
         console.log(response);
 
         sessionStorage.setItem('idUser', response.idUser);
@@ -46,4 +46,5 @@ export class AuthenticationComponent  implements OnInit {
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
+
 }

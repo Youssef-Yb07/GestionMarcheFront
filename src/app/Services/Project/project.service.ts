@@ -2,7 +2,6 @@ import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {Project} from "../../Classes/project";
-import StatusProjectEnum = Project.StatusProjectEnum;
 import {ProjectDTO} from "../../Classes/project-dto";
 
 @Injectable({
@@ -30,7 +29,7 @@ export class ProjectService {
   getProjectsByUser(idUser: number):Observable<Project[]>{
     return this.httpClient.get<Project[]>(`${this.BaseUrl}/get/by/user?idUser=${idUser}`)
   }
-  getProjectsByStatut(statut: StatusProjectEnum){
+  getProjectsByStatut(statut: string){
     return this.httpClient.get<Project[]>(`${this.BaseUrl}/get/by/etat?statusProject=${statut}`)
   }
   getProjectsByDate(date: Date){
@@ -68,7 +67,24 @@ export class ProjectService {
       return this.httpClient.patch<Project>(url, null);
 
     }
-
+    getProjectsByDirecteurOrChiefService(idUser: number):Observable<Project>{
+      return this.httpClient.get<Project>(`${this.BaseUrl}/get/by?idUser=${idUser}`)
+    }
+    updateBudget(idUser: number, idProject: number, budget: number):Observable<Project>{
+      return this.httpClient.patch<Project>(`${this.BaseUrl}/update/budget?idUser=${idUser}&idProject=${idProject}&budget=${budget}`, null)
+    }
+    updateStatut(idProject: number, statut: string):Observable<Project>{
+      return this.httpClient.patch<Project>(`${this.BaseUrl}/update/etat?idProject=${idProject}&etat=${statut}`, null)
+    }
+    deleteEmployeFromProject(idProject: number, idEmploye: number):Observable<Project>{
+      return this.httpClient.patch<Project>(`${this.BaseUrl}/delete/employe?idProject=${idProject}&idEmploye=${idEmploye}`,null);
+    }
+    getProjectById(idProject: number):Observable<Project>{
+      return this.httpClient.get<Project>(`${this.BaseUrl}/get?idProject=${idProject}`);
+    }
+    getAllProjectsByEmployee(idEmployee:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.BaseUrl}/get/by/employee/${idEmployee}`);
+  }
 
 
 

@@ -13,9 +13,11 @@ import {RouterLink} from "@angular/router";
         SideBarChefServiceComponent,
         SideBarEmployeComponent
     ],
-    exports: [
-        SideBarDirecteurComponent
-    ],
+  exports: [
+    SideBarDirecteurComponent,
+    SideBarChefServiceComponent,
+    SideBarEmployeComponent
+  ],
   imports: [
     CommonModule,
     RouterLink

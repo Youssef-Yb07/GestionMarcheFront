@@ -18,4 +18,18 @@ export class UserService {
   getAllChiefServiceNotAffected():Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.BaseUrl}/get/chiefService/not/affected`);
   }
+  login(email: string, password: string): Observable<any> {
+    return this.httpClient.post(`${this.BaseUrl}/auth`, {email, password});
+  }
+  getUserById(idUser:number):Observable<User>{
+    return this.httpClient.get<User>(`${this.BaseUrl}/get/${idUser}`);
+  }
+
+  getAllEmployeesByProject(idProject:number):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.BaseUrl}/get/Employees/by/project/${idProject}`);
+  }
+  getAllEmployeesNotMemberInProject(idProject:number):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.BaseUrl}/get/Employees/not/member/in/project/${idProject}`);
+  }
+
 }
