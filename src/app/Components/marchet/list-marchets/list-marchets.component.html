@@ -4,22 +4,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mon Projet</title>
+  <title>Liste des Marchets</title>
   <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
 </head>
 
 <body>
-<!-- Body Wrapper -->
+<!--  Body Wrapper -->
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
      data-sidebar-position="fixed" data-header-position="fixed">
   <!-- Sidebar Start -->
   <aside class="left-sidebar">
-    <app-side-bar-employe></app-side-bar-employe>
+    <app-side-bar-directeur></app-side-bar-directeur>
   </aside>
 
-  <!-- Main wrapper -->
+  <!--  Sidebar End -->
+  <!--  Main wrapper -->
   <div class="body-wrapper">
-    <!-- Header Start -->
+    <!--  Header Start -->
     <header class="app-header">
       <nav class="navbar navbar-expand-lg navbar-light">
         <ul class="navbar-nav">
@@ -40,67 +41,57 @@
             <li class="nav-item dropdown">
               <a class="nav-link nav-icon-hover" routerLink="/admin/profile" id="drop2" data-bs-toggle="dropdown"
                  aria-expanded="false">
-                <img ngSrc="../assets/images/profile/user-1.jpg" alt="" width="35" height="35"
-                     class="rounded-circle">
+                <img ngSrc="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
               </a>
             </li>
           </ul>
         </div>
       </nav>
     </header>
-    <!-- Header End -->
+    <!--  Header End -->
     <div class="container-fluid">
       <div class="card">
         <div class="card-body" style=" max-height: 200px;">
-          <h5 class="card-title fw-semibold mb-4">Visualisé la liste de mes projets</h5>
-          <p class="mb-0">Informations sur mes projets</p>
+          <h5 class="card-title fw-semibold mb-4">La liste des Marchets</h5>
+          <p class="mb-0">Visualiser les Marchets existants</p>
         </div>
       </div>
     </div>
-    <div class="container-md pt-9">
-      <div class="card">
-        <div class="card-body">
-        <table class="table table-striped text-center">
-          <thead>
+<div class="container-md pt-9">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title fw-semibold mb-4">List Markets</h5>
+      <div class="table-responsive">
+        <table class="table text-nowrap mb-0 align-middle">
+          <thead class="text-dark fs-4">
           <tr>
-            <th>nom du projet</th>
-            <th>budget</th>
-            <th (click)="sortProjectsByDateFin()" >date debut <br> date de fin</th>
-
-            <th>description</th>
-            <th>Directeur</th>
-            <th>Chef de Service</th>
-            <th>Cahier de charge</th>
-            <th>Telecharger CDC</th>
-            <th>Mes Taches</th>
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Nom</h6>
+            </th>
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Description</h6>
+            </th>
           </tr>
           </thead>
-          <tbody id="table" >
-          <tr *ngFor="let projet of projects">
-            <td>{{ projet.nom }}</td>
-            <td>{{ projet.budget }} DH</td>
-            <td>{{ projet.dateDebut | date:'dd/MM/yyyy' }} - {{projet.dateFin | date: 'dd/MM/yyyy'}}</td>
-            <td>{{ projet.description }}</td>
-            <td>{{ projet.directeur.nom }} {{ projet.directeur.prenom }}</td>
-            <td>{{ projet.chefService.nom }} {{ projet.chefService.prenom }}</td>
-            <td>{{ projet.fileName ? projet.fileName : '----' }}</td>
-            <td>
-              <button class="btn btn-success me-2" (click)="downloadFile(projet.idProject,projet.nom)">
-                <i class="ti ti-download"></i>
-              </button>
+          <tbody>
+          <tr *ngFor="let marchet of Markets">
+            <td class="border-bottom-0">
+              <span class="fw-normal">{{marchet.nom}}</span>
             </td>
-            <td>
-              <button class="btn btn-success" (click)="redirectToTaches(projet.idProject)">Mes Taches</button>
+            <td class="border-bottom-0">
+              <span class="fw-normal">{{marchet.description}}</span>
             </td>
           </tr>
           </tbody>
         </table>
-
       </div>
     </div>
   </div>
 </div>
+
 </div>
+</div>
+
 </body>
 
 </html>

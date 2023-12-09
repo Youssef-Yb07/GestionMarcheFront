@@ -33,4 +33,11 @@ export class TacheService {
   assignTaskToEmployee(idTask: number, idEmployee: number):Observable<Tache> {
     return this.httpClient.patch<Tache>(`${this.BaseUrl}/assign/to/employee?idTask=${idTask}&idEmployee=${idEmployee}`, null);
   }
+  getTasksFromProjectByEmployee(idProject: number, idEmployee: number):Observable<Tache[]> {
+    return this.httpClient.get<Tache[]>(`${this.BaseUrl}/get/from/project/by/employee?idProject=${idProject}&idEmployee=${idEmployee}`);
+  }
+  getTasksCountByStatus(): Observable<Map<string, number>> {
+    return this.httpClient.get<any>(`${this.BaseUrl}/get/count/by/status`);
+  }
+
 }

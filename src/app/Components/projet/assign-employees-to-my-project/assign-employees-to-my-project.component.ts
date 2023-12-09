@@ -15,6 +15,7 @@ export class AssignEmployeesToMyProjectComponent implements OnInit {
   idProject!: number;
   successMessage: string;
   errorMessage: string;
+  role: string|null;
 
   constructor(private userService: UserService, private projetService: ProjectService) { }
 
@@ -22,6 +23,7 @@ export class AssignEmployeesToMyProjectComponent implements OnInit {
     this.idProject = await this.getIdProjectFromSessionStorage();
     console.log("Test ============>", this.idProject);
     this.getEmployeesNotMembersInProject();
+    this.role = sessionStorage.getItem("role");
   }
 
   getIdProjectFromSessionStorage(): Promise<number> {

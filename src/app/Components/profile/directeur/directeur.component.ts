@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from "../../../Classes/project";
 import {ProjectService} from "../../../Services/Project/project.service";
+import {TacheService} from "../../../Services/Tache/tache.service";
 
 @Component({
   selector: 'app-directeur',
@@ -12,12 +13,15 @@ export class DirecteurComponent implements OnInit{
   idUser:number;
   projet!:Project;
 
+
+  chartData: { name: string; value: number }[] = [];
+
   ngOnInit() {
     this.idUser= Number(sessionStorage.getItem('idUser'));
     this.getProjectByUser();
   }
 
-  constructor(private projetService:ProjectService) {}
+  constructor(private projetService:ProjectService,private tacheService: TacheService) {}
   getProjectByUser(){
     this.projetService.getProjectsByDirecteurOrChiefService(this.idUser).subscribe(
       (data) => {
@@ -33,5 +37,6 @@ export class DirecteurComponent implements OnInit{
       }
     );
   }
+
 
 }

@@ -52,54 +52,49 @@
     <div class="container-fluid">
       <div class="card">
         <div class="card-body" style=" max-height: 200px;">
-          <h5 class="card-title fw-semibold mb-4">Visualisé la liste de mes projets</h5>
-          <p class="mb-0">Informations sur mes projets</p>
+          <h5 class="card-title fw-semibold mb-4">Visualisé la liste des mes taches</h5>
+          <p class="mb-0">mes taches</p>
         </div>
       </div>
     </div>
     <div class="container-md pt-9">
       <div class="card">
         <div class="card-body">
-        <table class="table table-striped text-center">
-          <thead>
-          <tr>
-            <th>nom du projet</th>
-            <th>budget</th>
-            <th (click)="sortProjectsByDateFin()" >date debut <br> date de fin</th>
+  <h4>My Tasks</h4>
 
-            <th>description</th>
-            <th>Directeur</th>
-            <th>Chef de Service</th>
-            <th>Cahier de charge</th>
-            <th>Telecharger CDC</th>
-            <th>Mes Taches</th>
-          </tr>
-          </thead>
-          <tbody id="table" >
-          <tr *ngFor="let projet of projects">
-            <td>{{ projet.nom }}</td>
-            <td>{{ projet.budget }} DH</td>
-            <td>{{ projet.dateDebut | date:'dd/MM/yyyy' }} - {{projet.dateFin | date: 'dd/MM/yyyy'}}</td>
-            <td>{{ projet.description }}</td>
-            <td>{{ projet.directeur.nom }} {{ projet.directeur.prenom }}</td>
-            <td>{{ projet.chefService.nom }} {{ projet.chefService.prenom }}</td>
-            <td>{{ projet.fileName ? projet.fileName : '----' }}</td>
-            <td>
-              <button class="btn btn-success me-2" (click)="downloadFile(projet.idProject,projet.nom)">
-                <i class="ti ti-download"></i>
-              </button>
-            </td>
-            <td>
-              <button class="btn btn-success" (click)="redirectToTaches(projet.idProject)">Mes Taches</button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+  <table class="table table-striped text-center">
+    <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Deadline</th>
+      <th>Description</th>
+      <th>Duration</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tache of taches">
+      <td>{{ tache.libelle }}</td>
+      <td>{{ tache.deadline | date:'yyyy-MM-dd' }}</td>
+      <td>{{ tache.description }}</td>
+      <td>{{ tache.duration }}</td>
+      <td>
+  <span [ngClass]="{'badge': true, 'bg-warning': tache.etat === 'en_attente', 'bg-success': tache.etat === 'en_cours'}" class="rounded-3 fw-semibold">
+    {{ tache.etat }}
+  </span>
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="updateTaskStatus(tache.idTask, 'en_cours')">Mark as In Progress</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 </body>
 

@@ -28,7 +28,7 @@ import { TacheModule } from './Components/tache/tache.module';
         FormsModule,
         SideBarsModule,
         MarchetModule,
-        TacheModule
+        TacheModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

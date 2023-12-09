@@ -14,7 +14,12 @@
      data-sidebar-position="fixed" data-header-position="fixed">
   <!-- Sidebar Start -->
   <aside class="left-sidebar">
-    <app-side-bar-directeur></app-side-bar-directeur>
+    <ng-container *ngIf="role == 'Directeur'">
+      <app-side-bar-directeur></app-side-bar-directeur>
+    </ng-container>
+    <ng-container *ngIf="role == 'Chef de service'">
+      <app-side-bar-chef-service></app-side-bar-chef-service>
+    </ng-container>
   </aside>
 
   <!-- Main wrapper -->

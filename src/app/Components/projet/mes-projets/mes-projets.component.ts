@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../../../Services/Project/project.service";
 import {Project} from "../../../Classes/project";
+import {TacheService} from "../../../Services/Tache/tache.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-mes-projets',
@@ -12,7 +14,7 @@ export class MesProjetsComponent implements OnInit{
 
   idEmployee!:number;
   projects: Project[] = [];
-  constructor(private projetService:ProjectService) {}
+  constructor(private projetService:ProjectService,private router:Router) {}
 
   ngOnInit(): void {
     this.idEmployee=Number(sessionStorage.getItem("idUser"));
@@ -44,7 +46,7 @@ export class MesProjetsComponent implements OnInit{
           fileName = fileNameMatch ? fileNameMatch[1] : fileName;
         }
 
-        const contentType = 'text/plain'; // Adjust based on the actual content type of the file
+        const contentType = response.headers.get('content-type');
         const blob = new Blob([response.body], { type: contentType });
 
         const downloadLink = document.createElement('a');
@@ -93,6 +95,11 @@ export class MesProjetsComponent implements OnInit{
       const dateB = new Date(b.dateFin).getTime();
       return dateA - dateB;
     });
+  }
+
+  redirectToTaches(idProject:number){
+    sessionStorage.setItem("idProject",String(idProject));
+    this.router.navigate(["/mes/taches"]);
   }
 
 
