@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Project} from "../../../Classes/project";
 import {ProjectService} from "../../../Services/Project/project.service";
+import {Tache} from "../../../Classes/tache";
+import {TacheService} from "../../../Services/Tache/tache.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-upload-cdc',
@@ -9,26 +12,39 @@ import {ProjectService} from "../../../Services/Project/project.service";
 })
 export class UploadCDCComponent implements OnInit{
 
-  Projects:Project[] = [];
-
-  selectedProject!:number;
-
+  projet!:Project;
   selectedFile!: File;
-  ngOnInit() {
-    this.getProjects();
-  }
-  constructor(private projetService:ProjectService) {}
+  tache!:Tache;
+  idUser:number;
+  role:string|null;
+  selectedProject:number;
+  successMessage:string;
+  errorMessage:string;
 
-  getProjects(){
-    this.projetService.getAllProjects().subscribe(
-      (data:Project[])=>{
-      this.Projects = data;
-    },
-    (err)=>{
-      console.log(err);
-    }
+  ngOnInit(): void {
+    this.idUser= Number(sessionStorage.getItem('idUser'));
+    console.log(this.idUser);
+    this.role = sessionStorage.getItem('role');
+    this.selectedProject = Number(sessionStorage.getItem('idProject'));
+    this.getProjectByUser();
+  }
+
+  getProjectByUser(){
+    this.projetService.getProjectsByDirecteurOrChiefService(this.idUser).subscribe(
+      (data) => {
+        this.projet = data;
+        console.log(this.projet);
+        if (this.projet) {
+          sessionStorage.setItem('idProject', String(this.projet.idProject));
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
     );
   }
+  constructor(private projetService:ProjectService,private router:Router) {}
+
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
@@ -37,9 +53,11 @@ export class UploadCDCComponent implements OnInit{
     this.projetService.uploadCdc(this.selectedProject,this.selectedFile).subscribe(
       (data)=>{
         console.log(data);
+        this.successMessage = "Le cahier des charges a été ajouté avec succès";
       },
       (err)=>{
         console.log(err);
+        this.errorMessage = "Erreur lors de l'ajout du cahier des charges";
       }
     );
   }

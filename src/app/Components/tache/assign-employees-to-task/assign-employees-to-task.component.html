@@ -1,0 +1,26 @@
+<div class="container mt-3">
+  <h3>Assign Employees to Tasks</h3>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Task</th>
+      <th>Assign Employee</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of taches">
+      <td>{{ task.libelle }}</td>
+      <td>
+        <select class="form-select" [(ngModel)]="selectedEmployee" name="employee">
+          <option *ngFor="let employee of employees" [value]="employee.idUser">{{ employee.nom}}</option>
+        </select>
+      </td>
+      <td>
+        <button type="button" class="btn btn-success" (click)="assignUsersToProject(task.idTask)">Assign</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Authentification</title>
+</head>
+
+<body>
+<!-- blue circle background -->
+<div class="d-none d-md-block ball register bg-gradient position-absolute rounded-circle"></div>
+
+<!-- logo name -->
+<div class="position-absolute top-0 start-0 p-3">
+  <a href="https://www.uir.ac.ma" class="text-decoration-none fw-bold fs-5">
+    <img src="https://www.uir.ac.ma/assets/_resources/img/logo-10ans.png" width="200" alt="UIR">
+  </a>
+</div>
+
+<!-- Register Section -->
+<div class="container register__form active ">
+  <div class="row vh-100 w-100 align-self-center">
+    <div class="d-none d-lg-block col-lg-6 col-xl-6 p-5">
+      <div class="row vh-100 p-5">
+        <div class="col align-self-center p-5 text-center">
+          <div id="lottie-container" class="bounce">
+            <iframe src="https://lottie.host/?file=c854a12f-2d32-4339-a42c-68acfff84be8/KiDIRkZWiJ.json"
+                    style=
+                      "width: 450px;
+                       height: 450px;
+                       margin-left: -14%;
+                       margin-top: -8%;">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 col-xl-6 px-5">
+      <div class="row vh-100">
+        <div class="col align-self-center p-5 w-100">
+          <div class="card bi-border-style align-self-center p-5 w-100"
+               style="box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+                                   animation-duration: 0.4s;
+                                   border-radius: 1.5rem;
+                                   backdrop-filter: blur(10px);
+                                   background-color: rgba(255, 255, 255, 29%);">
+            <div class="card-body p-0">
+              <h3 class="fw-bolder">Authentifiez vous !</h3>
+              <!-- form register section -->
+              <form (ngSubmit)="login()" class="mt-5">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id = "email"
+                         class="form-control text-indent shadow-sm bg-grey-light border-0 rounded-pill fw-lighter fs-7 p-3"
+                         placeholder="name@example.com" [(ngModel)]="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">mot de passe</label>
+                  <div class="d-flex position-relative">
+                    <input id="password"
+                           [type]="passwordVisible ? 'text' : 'password'"
+                           class="form-control text-indent auth__password shadow-sm bg-grey-light border-0 rounded-pill fw-lighter fs-7 p-3"
+                           placeholder="password" [(ngModel)]="password" name="password" required>
+                    <span class="password__icon text-primary fs-4 fw-bold bi"
+                          [class.bi-eye]="!passwordVisible"
+                          [class.bi-eye-slash]="passwordVisible"
+                          (click)="togglePasswordVisibility()"></span>
+                  </div>
+
+                </div>
+                <div class="alert alert-danger" *ngIf="loginError">{{ loginError }}</div>
+
+                <div class="col text-center">
+                  <button type="submit" class="btn btn-outline-dark btn-lg rounded-pill mt-4 w-100">Connexion</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
