@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../../../Services/Project/project.service";
 import {Project} from "../../../Classes/project";
+import {DirecteurComponent} from "../directeur/directeur.component";
 
 @Component({
   selector: 'app-chef-service',
   templateUrl: './chef-service.component.html',
   styleUrls: ['./chef-service.component.scss']
 })
-export class ChefServiceComponent implements OnInit{
+export class ChefServiceComponent extends DirecteurComponent{
 
-  idUser:number;
+  /*idUser:number;
   projet!:Project;
 
   ngOnInit() {
@@ -32,6 +33,6 @@ export class ChefServiceComponent implements OnInit{
         console.log(error);
       }
     );
-  }
+  }*/
 
 }

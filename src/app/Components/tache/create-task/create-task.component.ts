@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Tache} from "../../../Classes/tache";
 import {TacheService} from "../../../Services/Tache/tache.service";
-import {User} from "../../../Classes/user";
 import {Router} from "@angular/router";
 import {TaskDTO} from "../../../Classes/task-dto";
 import {ProjectService} from "../../../Services/Project/project.service";
@@ -18,6 +17,7 @@ export class CreateTaskComponent implements OnInit{
   idProject:number;
   project:Project=new Project();
   tache:Tache = new Tache();
+  role:string|null;
 
   constructor(private tacheService:TacheService,private projetService:ProjectService,private router:Router) {}
 
@@ -25,6 +25,7 @@ export class CreateTaskComponent implements OnInit{
     this.idProject=Number(sessionStorage.getItem('idProject'));
     this.getProjectByID();
     console.log("this.project" + this.project);
+    this.role=sessionStorage.getItem('role');
   }
 
   createTask() {
@@ -34,6 +35,7 @@ export class CreateTaskComponent implements OnInit{
 
       (data) => {
         console.log(data);
+        this.router.navigate(['/projets/monprojet']);
       },
       (error) => {
         console.log(error);
