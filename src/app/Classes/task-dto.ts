@@ -2,7 +2,7 @@ import {Project} from "./project";
 
 export class TaskDTO {
 
-fi  idTask!: number;
+  idTask!: number;
 
   libelle!: string;
 
