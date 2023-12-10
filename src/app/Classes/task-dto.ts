@@ -2,17 +2,17 @@ import {Project} from "./project";
 
 export class TaskDTO {
 
-  idTask: number;
+fi  idTask!: number;
 
-  libelle: string;
+  libelle!: string;
 
-  deadline: Date;
+  deadline!: Date;
 
-  description: string;
+  description!: string;
 
-  duration: string;
+  duration!: string;
 
-  etat: String;
+  etat!: String;
 
-  projet:Project;
+  project!:Project;
 }

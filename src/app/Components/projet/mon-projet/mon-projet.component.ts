@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {User} from "../../../Classes/user";
 import {ProjectService} from "../../../Services/Project/project.service";
 import {Project} from "../../../Classes/project";
 import {TacheService} from "../../../Services/Tache/tache.service";
@@ -28,7 +29,7 @@ export class MonProjetComponent implements OnInit{
     this.getProjectByUser();
   }
 
-  getProjectByUser(){
+  getProjectByUser() {
     this.projetService.getProjectsByDirecteurOrChiefService(this.idUser).subscribe(
       (data) => {
         this.projet = data;

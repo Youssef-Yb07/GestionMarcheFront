@@ -141,7 +141,7 @@
                     <p><strong> Nom : </strong>{{ task.libelle }}</p>
                     <p><strong> Description : </strong> {{ task.description }}</p>
                     <p><strong> Deadline: </strong>{{ task.deadline }}</p>
-                    <p><strong> Employé Résponsable : </strong>{{ task.employee.nom }} {{ task.employee.prenom }} ({{ task.employee.email }})</p>
+                    <p><strong> Employé Résponsable : </strong>{{ task.employee?.nom }} {{ task.employee?.prenom }} ({{ task.employee?.email }})</p>
                     <p><strong> Status : </strong>
   <span [ngClass]="{'badge': true, 'bg-secondary': task.etat === 'en_attente', 'bg-warning': task.etat === 'en_cours', 'bg-success': task.etat === 'validee', 'bg-danger': task.etat === 'non_validee', 'rounded-3': true, 'fw-semibold': true}">
     {{ task.etat }}
@@ -173,6 +173,8 @@
                     </button>
                   </td>
                 </tr>
+
+
                 </tbody>
               </table>
             </div>

@@ -4,36 +4,27 @@
 
     <div class="mb-3">
       <label for="libelle" class="form-label">Task Name</label>
-      <input type="text" class="form-control" id="libelle" [(ngModel)]="tache.libelle" name="libelle" required>
+      <input type="text" class="form-control" id="libelle" [(ngModel)]="tacheDTO.libelle" name="libelle" required>
     </div>
     <div class="mb-3">
       <label for="deadline" class="form-label">Deadline</label>
-      <input type="date" class="form-control" id="deadline" [(ngModel)]="tache.deadline" name="deadline" required>
+      <input type="date" class="form-control" id="deadline" [(ngModel)]="tacheDTO.deadline" name="deadline" required>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" id="description" [(ngModel)]="tache.description" name="description" required></textarea>
+      <textarea class="form-control" id="description" [(ngModel)]="tacheDTO.description" name="description" required></textarea>
     </div>
     <div class="mb-3">
       <label for="duration" class="form-label">Duration</label>
-      <input type="text" class="form-control" id="duration" [(ngModel)]="tache.duration" name="duration" required>
+      <input type="text" class="form-control" id="duration" [(ngModel)]="tacheDTO.duration" name="duration" required>
     </div>
     <div class="mb-3">
       <label for="status" class="form-label">Status</label>
-      <select class="form-select" aria-label="Default select example" id="status" [(ngModel)]="tache.etat" name="status" required>
+      <select class="form-select" aria-label="Default select example" id="status" [(ngModel)]="tacheDTO.etat" name="status" required>
         <option value="en_attente">En Attente</option>
         <option value="en_cours">En Cours</option>
       </select>
     </div>
-
-    <div class="mb-3">
-      <label for="project" class="form-label">Project</label>
-      <select class="form-select" aria-label="Default select example" id="project" [(ngModel)]="tache.projet" name="project" required>
-        <option [value]="project">{{ project.nom }}</option>
-      </select>
-    </div>
-
-
 
     <button type="submit" class="btn btn-primary">Create Task</button>
   </form>

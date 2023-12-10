@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Tache} from "../../../Classes/tache";
 import {TacheService} from "../../../Services/Tache/tache.service";
 import {User} from "../../../Classes/user";
 import {Router} from "@angular/router";
@@ -13,19 +14,23 @@ import {Project} from "../../../Classes/project";
 })
 export class CreateTaskComponent implements OnInit{
 
-  tache:TaskDTO=new TaskDTO();
+  tacheDTO:TaskDTO=new TaskDTO();
   idProject:number;
   project:Project=new Project();
+  tache:Tache = new Tache();
 
   constructor(private tacheService:TacheService,private projetService:ProjectService,private router:Router) {}
 
   ngOnInit(): void {
     this.idProject=Number(sessionStorage.getItem('idProject'));
     this.getProjectByID();
+    console.log("this.project" + this.project);
   }
 
   createTask() {
-    this.tacheService.createTache(this.tache).subscribe(
+    this.tacheDTO.project = this.project;
+    console.log("this.tacheDTO.project :::: " + this.tacheDTO.project.nom)
+    this.tacheService.createTache(this.tacheDTO).subscribe(
 
       (data) => {
         console.log(data);
@@ -40,6 +45,7 @@ export class CreateTaskComponent implements OnInit{
       (data)=>{
         console.log(data);
         this.project=data;
+        this.tacheDTO.project = this.project;
       },
       (error)=>{
         console.log(error);
