@@ -2,8 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Project} from "../../../Classes/project";
 import {ProjectService} from "../../../Services/Project/project.service";
 import {TacheService} from "../../../Services/Tache/tache.service";
-import {Chart} from 'chart.js';
-
+import Chart from 'chart.js/auto'
 
 @Component({
   selector: 'app-directeur',
@@ -56,7 +55,7 @@ export class DirecteurComponent implements OnInit{
   }
 
 
-  @ViewChild('TacheParStatut')TacheParStatutChartCanvas: ElementRef;
+  @ViewChild('TacheParStatut')TacheParStatutChartCanvas!: ElementRef;
   createChart(data: Map<string, number>): void {
 
     const labels = Object.keys(data);
@@ -74,12 +73,11 @@ export class DirecteurComponent implements OnInit{
           labels: labels,
           datasets: [
             {
-              label: 'Pourcentages Par Etat de tache',
               data: values,
               backgroundColor: [
-                'rgb(210,0,0)',
-                'rgb(61,18,105)',
-                'rgb(89,20,36)',
+                'rgb(241,61,61)',
+                'rgb(31,47,107)',
+                'rgb(170,147,255)',
                 'rgba(124,227,0,0.6)',
                 'rgba(255, 206, 86, 0.6)',
                 'rgb(203,52,87)',
@@ -93,10 +91,10 @@ export class DirecteurComponent implements OnInit{
           responsive: true,
           plugins: {
             legend: {
-              position: 'top',
+              position: 'bottom',
             },
             title: {
-              display: true,
+              display: false,
               text: "Pourcentage Par Etat de tache",
             },
           },
