@@ -67,6 +67,7 @@ export class DirecteurComponent implements OnInit{
     const ctx = this.TacheParStatutChartCanvas.nativeElement.getContext('2d');
 
     if (ctx) {
+      console.log('Creating chart');
       this.chartTaskState = new Chart(ctx, {
         type: 'pie' as any,
         data: {
