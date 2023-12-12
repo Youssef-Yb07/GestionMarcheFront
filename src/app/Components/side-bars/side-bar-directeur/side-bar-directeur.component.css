@@ -1,7 +1,7 @@
 /* Style de la barre de défilement pour les navigateurs WebKit (Chrome, Safari) */
 .scroll-sidebar {
   scrollbar-width: thin;
-  scrollbar-color: #555555 #f1f1f1; /* Couleur de la barre de défilement et couleur du fond de la barre de défilement */
+  scrollbar-color: #c7bebe #f1f1f1; /* Couleur de la barre de défilement et couleur du fond de la barre de défilement */
 }
 
 .scroll-sidebar::-webkit-scrollbar {
@@ -9,7 +9,7 @@
 }
 
 .scroll-sidebar::-webkit-scrollbar-thumb {
-  background-color: #555555; /* Couleur de la poignée de la barre de défilement */
+  background-color: #C7BEBEFF; /* Couleur de la poignée de la barre de défilement */
   border-radius: 4px; /* Bordure arrondie de la poignée */
 }
 

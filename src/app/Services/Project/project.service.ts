@@ -85,7 +85,12 @@ export class ProjectService {
     getAllProjectsByEmployee(idEmployee:number):Observable<any>{
     return this.httpClient.get<any>(`${this.BaseUrl}/get/by/employee/${idEmployee}`);
   }
-
+  getProjectCountByStatus(): Observable<Map<string, number>> {
+    return this.httpClient.get<any>(`${this.BaseUrl}/get/count/by/status`);
+  }
+  getProjectCountByEmployee(): Observable<Map<string, number>> {
+    return this.httpClient.get<any>(`${this.BaseUrl}/get/count/by/employee`);
+  }
 
 
 }
