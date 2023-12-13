@@ -6,6 +6,7 @@ import { DirecteurComponent } from './directeur/directeur.component';
 import { ChefServiceComponent } from './chef-service/chef-service.component';
 import { EmployeComponent } from './employe/employe.component';
 import {SideBarsModule} from "../side-bars/side-bars.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -15,10 +16,11 @@ import {SideBarsModule} from "../side-bars/side-bars.module";
        ChefServiceComponent,
        EmployeComponent
   ],
-  imports: [
-    CommonModule,
-    ProfileRoutingModule,
-    SideBarsModule
-  ]
+    imports: [
+        CommonModule,
+        ProfileRoutingModule,
+        SideBarsModule,
+        FormsModule
+    ]
 })
 export class ProfileModule { }

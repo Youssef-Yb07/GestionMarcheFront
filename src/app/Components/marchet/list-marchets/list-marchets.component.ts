@@ -5,7 +5,7 @@ import {MarcheService} from "../../../Services/Marche/marche.service";
 @Component({
   selector: 'app-list-marchets',
   templateUrl: './list-marchets.component.html',
-  styleUrls: ['./list-marchets.component.scss']
+  styleUrls: ['./list-marchets.component.css']
 })
 export class ListMarchetsComponent implements OnInit{
 
